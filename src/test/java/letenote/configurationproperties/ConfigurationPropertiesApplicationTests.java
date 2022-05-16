@@ -47,4 +47,17 @@ class ConfigurationPropertiesApplicationTests {
 		Assertions.assertEquals(100,applicationProperties.getDatabase().getMaxTablesSize().get("customers"));
 		Assertions.assertEquals(100,applicationProperties.getDatabase().getMaxTablesSize().get("categories"));
 	}
+
+	@Test
+	void embeddedCollectionConfigurationPropertiesTest() {
+		Assertions.assertEquals("default", applicationProperties.getDefaultRoles().get(0).getId());
+		Assertions.assertEquals("default-role", applicationProperties.getDefaultRoles().get(0).getName());
+		Assertions.assertEquals("guest", applicationProperties.getDefaultRoles().get(1).getId());
+		Assertions.assertEquals("guest-role", applicationProperties.getDefaultRoles().get(1).getName());
+
+		Assertions.assertEquals("admin-id", applicationProperties.getRoles().get("admin").getId());
+		Assertions.assertEquals("admin-role", applicationProperties.getRoles().get("admin").getName());
+		Assertions.assertEquals("finance-id", applicationProperties.getRoles().get("finance").getId());
+		Assertions.assertEquals("finance-role", applicationProperties.getRoles().get("finance").getName());
+	}
 }
