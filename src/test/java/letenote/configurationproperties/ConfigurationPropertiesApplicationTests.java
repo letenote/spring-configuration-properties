@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 @SpringBootTest
 class ConfigurationPropertiesApplicationTests {
 	@Autowired
@@ -35,5 +38,13 @@ class ConfigurationPropertiesApplicationTests {
 		Assertions.assertEquals(applicationDatabaseUrlExpected,applicationProperties.getDatabase().getUrl());
 		Assertions.assertEquals(applicationDatabaseUsernameExpected,applicationProperties.getDatabase().getUsername());
 		Assertions.assertEquals(applicationDatabasePasswordExpected,applicationProperties.getDatabase().getPassword());
+	}
+
+	@Test
+	void collectionsConfigurationPropertiesTest(){
+		Assertions.assertEquals(Arrays.asList("products","customers","categories"),applicationProperties.getDatabase().getWhitelistTables());
+		Assertions.assertEquals(100,applicationProperties.getDatabase().getMaxTablesSize().get("products"));
+		Assertions.assertEquals(100,applicationProperties.getDatabase().getMaxTablesSize().get("customers"));
+		Assertions.assertEquals(100,applicationProperties.getDatabase().getMaxTablesSize().get("categories"));
 	}
 }
