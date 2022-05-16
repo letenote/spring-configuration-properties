@@ -11,4 +11,13 @@ public class ApplicationProperties {
 	private String name;
 	private Integer version;
 	private boolean productionMode;
+	private DatabaseProperties database;
+
+	@Getter
+	@Setter
+	public static class DatabaseProperties{
+		private String username;
+		private String password;
+		private String url;
+	}
 }

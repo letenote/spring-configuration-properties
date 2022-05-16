@@ -26,4 +26,14 @@ class ConfigurationPropertiesApplicationTests {
 		Assertions.assertEquals(applicationProductionModeExpected,applicationProperties.isProductionMode());
 	}
 
+	@Test
+	void complexConfigurationPropertiesTest(){
+		String applicationDatabaseUsernameExpected = "database-username";
+		String applicationDatabasePasswordExpected = "secret";
+		String applicationDatabaseUrlExpected = "https://mongodb.com/bla/bla/bla";
+
+		Assertions.assertEquals(applicationDatabaseUrlExpected,applicationProperties.getDatabase().getUrl());
+		Assertions.assertEquals(applicationDatabaseUsernameExpected,applicationProperties.getDatabase().getUsername());
+		Assertions.assertEquals(applicationDatabasePasswordExpected,applicationProperties.getDatabase().getPassword());
+	}
 }
